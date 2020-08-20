@@ -1,0 +1,58 @@
+\documentclass[16pt,landscape]{article}
+
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{graphicx}
+\usepackage{datatool}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{background}
+\backgroundsetup{
+	scale=1,
+	color=white,
+	opacity=1,
+	angle=0,
+	contents={%
+		\includegraphics[width=\paperwidth,height=\paperheight]{background.jpeg}
+	}%
+}
+
+\DTLloaddb{names}{names.csv}
+
+\pagestyle{empty}
+
+\begin{document}
+
+\DTLforeach{names}
+{\name=Name}{
+	\begin{center}
+		{\huge\textbf{}}
+
+		\vspace{6cm}
+
+		{\Large
+			\begin{minipage}{.8\textwidth}
+				Text
+				{\bfseries\MakeUppercase{\name}}
+				more text
+			\end{minipage}
+
+			\vspace{5mm}
+
+			\begin{table}[H]
+				\begin{center}
+				\begin{tabular}{cccc}
+					\includegraphics{signature1.png} & \includegraphics{signature2.png} & \includegraphics{signature3.png} & \includegraphics{signature4.png}\\
+					Title 1 & Title 2 & Title 3 & Title 4\\
+					Name 1 & Name 2 & Name 3 & Name 4
+				\end{tabular}
+				\end{center}
+			\end{table}
+		}
+	\end{center}
+	\vfill
+	\newpage
+}
+
+\end{document}
